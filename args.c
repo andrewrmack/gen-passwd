@@ -7,11 +7,11 @@
 
 #define VERSION "1.0"
 
-int get_args(int argc, char *argv[], char* space, char* alpha)
+size_t get_args(int argc, char *argv[], char* space, char* alpha)
 {
     char* program_name = argv[0];
 
-    int length = 20; /* default to 20 if no length given */
+    size_t length = 20; /* default to 20 if no length given */
 
     while(1) {
         int c;
@@ -41,10 +41,10 @@ int get_args(int argc, char *argv[], char* space, char* alpha)
                 exit(EXIT_SUCCESS);
                 break;
             case 'l':
-                if(sscanf(optarg, "%10d", &length) == EOF) {
+                if(sscanf(optarg, "%10zu", &length) == EOF) {
                     fprintf(stderr,
                             "Error parsing length argument: %s\n", optarg);
-                    length = -1;
+                    length = 0;
                 }
                 break;
             case 's':
@@ -55,7 +55,7 @@ int get_args(int argc, char *argv[], char* space, char* alpha)
                 break;
             default:
                 fprintf(stderr, "Error: unrecognized argument\n");
-                return -1;
+                return 0;
         }
     }
     return length;
