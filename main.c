@@ -12,6 +12,7 @@ int main(int argc, char* argv[])
     char space = 1, alpha = 1;
     int length = get_args(argc, argv, &space, &alpha);
 
+    printf("space=%d  alpha=%d length=%d\n", space, alpha, length);
     if(length == -1)
         return EXIT_FAILURE;
 

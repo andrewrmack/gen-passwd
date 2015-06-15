@@ -48,10 +48,10 @@ int get_args(int argc, char *argv[], char* space, char* alpha)
                 }
                 break;
             case 's':
-                space = 0;
+                *space = 0;
                 break;
             case 'a':
-                alpha = 0;
+                *alpha = 0;
                 break;
             default:
                 fprintf(stderr, "Error: unrecognized argument\n");
