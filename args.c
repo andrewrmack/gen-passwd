@@ -1,15 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <libgen.h>
 #include <getopt.h>
 
 #include "args.h"
 
 #define VERSION "1.0"
 
+char* program_name;
+
 size_t get_args(int argc, char *argv[], char* space, char* alpha)
 {
-    char* program_name = argv[0];
+    program_name = basename(argv[0]);
 
     size_t length = 20; /* default to 20 if no length given */
 
@@ -34,10 +37,10 @@ size_t get_args(int argc, char *argv[], char* space, char* alpha)
 
         switch(c) {
             case 'v':
-                print_version(program_name);
+                print_version();
                 exit(EXIT_SUCCESS);
             case 'h':
-                print_help(program_name);
+                print_help();
                 exit(EXIT_SUCCESS);
                 break;
             case 'l':
@@ -54,14 +57,15 @@ size_t get_args(int argc, char *argv[], char* space, char* alpha)
                 *alpha = 0;
                 break;
             default:
-                fprintf(stderr, "Error: unrecognized argument\n");
-                return 0;
+                puts("Usage:");
+                print_help();
+                exit(EXIT_FAILURE);
         }
     }
     return length;
 }
 
-void print_help(char* program_name)
+void print_help(void)
 {
     printf("%s: generate a password from /dev/urandom\n"
            "\t-l num, --length=num\n"
@@ -77,12 +81,12 @@ void print_help(char* program_name)
             program_name);
 }
 
-void print_version(char* program_name)
+void print_version(void)
 {
     printf("%s %s\n"
            "License GPLv2+: GNU GPL version 2 or later\n"
            "This is free software: you are free to change and"
-              "redistribute it\n"
+              " redistribute it\n"
            "There is NO WARRANTY, to the extent permitted by the law.\n\n"
            "Written by Andrew Mack\n",
             program_name, VERSION);

@@ -1,10 +1,10 @@
 ### Makefile for gen-passwd ###
+PROG=gen-passwd
 
 PREFIX=/usr/local
 
 OBJS=main.o args.o
 LIBS=args.h alphabets.h
-PROG=gen-passwd
 
 CFLAGS=-O2 -pipe -fstack-protector -Wl,-z,relro -Wl,-z,now -Wl,-O1 \
        -fno-exceptions

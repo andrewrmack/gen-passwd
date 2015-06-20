@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <libgen.h>
 #include <errno.h>
 
 #include "alphabets.h"
@@ -9,6 +10,8 @@
 
 int main(int argc, char* argv[])
 {
+    char* program_name = basename(argv[0]);
+
     char space = 1, alpha = 1;
     size_t length = get_args(argc, argv, &space, &alpha);
 
@@ -26,7 +29,7 @@ int main(int argc, char* argv[])
         fread(&num, sizeof(char), 1, frand);
         if(ferror(frand)) {
             fprintf(stderr, "%s: failed to open /dev/urandom/: %s\n",
-                    argv[0], strerror(errno));
+                    program_name, strerror(errno));
             free(passwd);
             fclose(frand);
             return EXIT_FAILURE;
