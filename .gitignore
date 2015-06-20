@@ -31,3 +31,6 @@ gen-passwd
 
 # Debug files
 *.dSYM/
+
+# Swap files
+*.swp
