@@ -1,0 +1,42 @@
+.\" Man page for gen-passwd
+
+.TH gen-passwd 1 "August 2015" "v1.0" "User Commands"
+
+.SH NAME
+gen\-passwd \- generate a random password
+
+.SH SYNOPSIS
+.B gen\-passwd
+[\fIOPTIONS\fR] ...
+
+.SH DESCRIPTION
+.PP
+Uses /dev/urandom to generate a random password for the user using a
+character set specified by the user.
+.PP
+Mandatory arguments to long options are mandatory for short options too.
+.TP
+\fB\-l\fR, \fB\-\-length=\fR=\fILENGTH\fR
+specify number of characters in generated password (default 50)
+.TP
+\fB\-s\fR, \fB\-\-no\-spaces\fR
+do not include spaces in generated password
+.TP
+\fB\-a\fR, \fB\-\-alphanum\-only\fR
+use only alphanumeric characters in generated password
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+display help message and exit
+.TP
+\fB\-v\fR, \fB\-\-version\fR
+display version information and exit
+.PP
+.SS "Exit status:"
+.TP
+0
+if successful
+.TP
+1
+if unable to open /dev/urandom or given length=0
+.SH AUTHOR
+Written by Andrew Mack

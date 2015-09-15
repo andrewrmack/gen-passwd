@@ -33,6 +33,7 @@ clean:
 
 install:
 	install -m 0755 $(PROG) $(PREFIX)/bin
+	gzip gen-passwd.1
 	chown root gen-passwd.1.gz
 	chmod 644 gen-passwd.1.gz
 	cp gen-passwd.1.gz /usr/share/man/man1
