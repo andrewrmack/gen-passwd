@@ -8,7 +8,7 @@ LIBS=args.h alphabets.h
 
 CFLAGS=-O2 -pipe -fstack-protector -Wl,-z,relro -Wl,-z,now -Wl,-O1 \
        -fno-exceptions
-CC=gcc
+CC=cc
 
 all: $(PROG)
 
